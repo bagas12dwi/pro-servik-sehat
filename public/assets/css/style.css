@@ -1,0 +1,150 @@
+:root {
+    --color-primary: #9387cf;
+    --color-primary-hover: #7b6fb8;
+    --color-primary-border: #9387cf;
+    --color-secondary: #d6d3f2;
+    --color-secondary-hover: #a39fc5;
+    --color-secondary-border: #d6d3f2;
+    --color-blue: #C2DCF7;
+    --color-cream: #F2DDD8;
+    --color-grey: #E1E6EA;
+}
+
+body{
+    background-color: #FEFEFF;
+}
+
+.btn-primary {
+    color: #fff; /* Text color */
+    background-color: var(--color-primary)!important; /* Background color */
+    border-color: var(--color-primary)!important; /* Border color */
+}
+
+.btn-primary:hover {
+    color: #fff!important; /* Text color on hover */
+    background-color: var(--color-primary-hover)!important; /* Background color on hover */
+    border-color: var(--color-primary-border)!important; /* Border color on hover */
+}
+
+.btn-primary:focus, .btn-primary.focus {
+    color: #fff!important;
+    background-color: var(--color-primary-hover)!important;
+    border-color: var(--color-primary-border)!important;
+    box-shadow: 0 0 0 0.25rem rgba(147, 135, 207, 0.5)!important; /* Focus ring */
+}
+
+.btn-primary:active, .btn-primary.active {
+    color: #fff!important;
+    background-color: var(--color-primary-border)!important;
+    border-color: var(--color-primary-border)!important;
+}
+
+.btn-primary.disabled, .btn-primary:disabled {
+    color: #fff!important;
+    background-color: var(--color-primary)!important;
+    border-color: var(--color-primary)!important;
+}
+
+.btn-secondary {
+    color: #fff; /* Text color */
+    background-color: var(--color-secondary)!important; /* Background color */
+    border-color: var(--color-secondary)!important; /* Border color */
+}
+
+.btn-secondary:hover {
+    color: #fff!important; /* Text color on hover */
+    background-color: var(--color-secondary-hover)!important; /* Background color on hover */
+    border-color: var(--color-secondary-border)!important; /* Border color on hover */
+}
+
+.btn-secondary:focus, .btn-secondary.focus {
+    color: #fff!important;
+    background-color: var(--color-secondary-hover)!important;
+    border-color: var(--color-secondary-border)!important;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.5)!important; /* Focus ring */
+}
+
+.btn-secondary:active, .btn-secondary.active {
+    color: #fff!important;
+    background-color: var(--color-secondary-border)!important;
+    border-color: var(--color-secondary-border)!important;
+}
+
+.btn-secondary.disabled, .btn-secondary:disabled {
+    color: #fff!important;
+    background-color: var(--color-secondary)!important;
+    border-color: var(--color-secondary)!important;
+}
+
+.text-primary{
+    color: var(--color-primary)!important;
+}
+
+.bg-primary {
+    background-color: var(--color-primary) !important;
+}
+
+.bg-secondary {
+    background-color: var(--color-secondary) !important;
+}
+.bg-blue {
+    background-color: var(--color-blue) !important;
+}
+.bg-cream {
+    background-color: var(--color-cream) !important;
+}
+.bg-grey {
+    background-color: var(--color-grey) !important;
+}
+
+.jumbotron {
+    position: relative;
+    background: url('/assets/img/jumbotron.jpg') center center/cover no-repeat;
+    color: white;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.jumbotron-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.jumbotron-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero {
+    position: relative;
+    background: url('/assets/img/jumbotron.jpg') center center/cover no-repeat;
+    color: white;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
