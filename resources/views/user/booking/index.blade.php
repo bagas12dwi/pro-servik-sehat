@@ -110,7 +110,7 @@
                         'id' => 'address',
                         'label' => 'Alamat',
                     ])
-                    <div class="d-flex align-items-center justify-content-between">
+                    <div class="d-flex flex-wrap align-items-center justify-content-between">
                         @include('components.form.input-text', [
                             'db' => $data->area_code ?? '',
                             'id' => 'area_code',
