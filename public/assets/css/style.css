@@ -1,17 +1,20 @@
 :root {
-    --color-primary: #9387cf;
-    --color-primary-hover: #7b6fb8;
-    --color-primary-border: #9387cf;
-    --color-secondary: #d6d3f2;
-    --color-secondary-hover: #a39fc5;
-    --color-secondary-border: #d6d3f2;
+    --color-primary: #07BEB8;
+    --color-primary-hover: #01a5a0;
+    --color-primary-border: #07BEB8;
+    --color-secondary: #007985;
+    --color-secondary-hover: #005e66;
+    --color-secondary-border: #007985;
+    --color-third: #1C2541;
+    --color-third-hover: #121829;
+    --color-third-border: #1C2541;
     --color-blue: #C2DCF7;
     --color-cream: #F2DDD8;
     --color-grey: #E1E6EA;
 }
 
 body{
-    background-color: #FEFEFF;
+    background-color: #DCDCDC;
 }
 
 .btn-primary {
