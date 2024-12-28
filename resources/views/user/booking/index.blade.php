@@ -108,7 +108,7 @@
                     @include('components.form.input-text-area', [
                         'db' => $data->address ?? '',
                         'id' => 'address',
-                        'label' => 'Alamat',
+                        'label' => 'Alamat Domisili',
                     ])
                     <div class="d-flex flex-wrap align-items-center justify-content-between">
                         @include('components.form.input-text', [

@@ -13,6 +13,16 @@ return new class extends Migration
     {
         Schema::create('identity_histories', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('booking_id')->constrained()->onDelete('cascade');
+            $table->string('status_nikah_klien')->nullable();
+            $table->string('status_nikah_klien_desc')->nullable();
+            $table->string('status_nikah_suami')->nullable();
+            $table->string('status_nikah_suami_desc')->nullable();
+            $table->string('pendidikan_klien')->nullable();
+            $table->string('pendidikan_klien_desc')->nullable();
+            $table->string('pekerjaan_klien')->nullable();
+            $table->string('pekerjaan_klien_desc')->nullable();
+            $table->string('pekerjaan_suami')->nullable();
             $table->timestamps();
         });
     }

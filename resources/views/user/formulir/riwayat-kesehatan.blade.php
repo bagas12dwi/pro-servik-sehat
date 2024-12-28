@@ -72,7 +72,7 @@
                 'id' => 'normal',
                 'label' => 'Normal',
                 'name' => 'melahirkan_normal',
-                'value' => 'Normal',
+                'value' => 0,
                 'db' => $data->melahirkan_normal ?? '',
                 'wrapperType' => '-wrapper',
                 'satuan' => 'X',
@@ -81,7 +81,7 @@
                 'id' => 'caesar',
                 'label' => 'Caesar',
                 'name' => 'melahirkan_caesar',
-                'value' => 'Caesar',
+                'value' => 0,
                 'db' => $data->melahirkan_caesar ?? '',
                 'wrapperType' => '-wrapper',
                 'satuan' => 'X',
@@ -90,7 +90,7 @@
                 'id' => 'keguguran',
                 'label' => 'Keguguran',
                 'name' => 'keguguran',
-                'value' => 'Keguguran',
+                'value' => 0,
                 'db' => $data->keguguran ?? '',
                 'wrapperType' => '-wrapper',
                 'satuan' => 'X',
@@ -244,7 +244,7 @@
                 'name' => 'kb_sekarang_lainnya',
                 'value' => 'Lainnya',
                 'db' => $data->kb_sekarang_lainnya ?? '',
-                'wrapperType' => '-wrapper',
+                'wrapperType' => '-wrapper-text',
             ])
         </div>
         @include('components.form.label', [
@@ -357,50 +357,116 @@
         </div>
     </div>
 </div>
-
 @push('script')
     <script>
         $(document).ready(function() {
+            var normal = $('#normal').attr('id');
+            var showNormal = $('#normal').data('show');
+            var caesar = $('#caesar').attr('id');
+            var showCaesar = $('#caesar').data('show');
+            var keguguran = $('#keguguran').attr('id');
+            var showKeguguran = $('#keguguran').data('show');
 
-            $('input.form-check-input').on('change', function() {
+            if (normal === 'normal' || caesar === 'caesar' || keguguran === 'keguguran') {
+                $('#' + showNormal).removeClass('d-none').removeClass('d-none').find('input')
+                    .prop('disabled', false);
+                $('#' + showCaesar).removeClass('d-none').removeClass('d-none').find('input')
+                    .prop('disabled', false);
+                $('#' + showKeguguran).removeClass('d-none').removeClass('d-none').find('input')
+                    .prop('disabled', false);
+            }
+
+            $('input[type="checkbox"].form-check-input').on('change', function() {
                 const wrapperId = $(this).attr('id') + '-wrapper';
                 const showId = $(this).data('show');
-
+                const id = $(this).attr('id');
                 if ($(this).is(':checked')) {
-                    $('#' + showId).removeClass('d-none');
-                } else {
-                    $('#' + showId).addClass('d-none');
+                    if (id !== 'normal' && id !== 'caesar' && id !== 'keguguran') {
+                        $('#' + showId).removeClass('d-none').find('input')
+                        .prop('disabled', false);
+                        $(this).val(1);
+                    }
+                    $(this).val(1);
+                } else if (id === 'normal' && id === 'caesar' && id === 'keguguran') {
+                    $('#' + showId).removeClass('d-none').find('input')
+                    .prop('disabled', false);
+                } else if (id !== 'normal' && id !== 'caesar' && id !== 'keguguran') {
+                    $('#' + showId).addClass('d-none')
+                    .find('input')
+                    .prop('disabled', true);
+                    $(this).val(0);
                 }
             });
+
 
             $('input[name="menyusui"]').on('change', function() {
                 const value = $(this).val();
 
                 if (value == 1) {
-                    $('#menyusui-ya-wrapper').removeClass('d-none');
+                    // Show and enable inputs for "menyusui-ya-wrapper"
+                    $('#menyusui-ya-wrapper')
+                        .removeClass('d-none')
+                        .find('input')
+                        .prop('disabled', false);
                 } else {
-                    $('#menyusui-ya-wrapper').addClass('d-none');
+                    // Hide and disable inputs for "menyusui-ya-wrapper"
+                    $('#menyusui-ya-wrapper')
+                        .addClass('d-none')
+                        .find('input')
+                        .prop('disabled', true);
                 }
-            })
+            });
+
+            // Initialize state for menyusui
+            $('input[name="menyusui"]:checked').trigger('change');
+
+            // Handle merokok change
             $('input[name="merokok"]').on('change', function() {
                 const value = $(this).val();
 
                 if (value == 1) {
-                    $('#merokok-ya-wrapper').removeClass('d-none');
+                    // Show and enable inputs for "merokok-ya-wrapper"
+                    $('#merokok-ya-wrapper')
+                        .removeClass('d-none')
+                        .find('input')
+                        .prop('disabled', false);
                 } else {
-                    $('#merokok-ya-wrapper').addClass('d-none');
+                    // Hide and disable inputs for "merokok-ya-wrapper"
+                    $('#merokok-ya-wrapper')
+                        .addClass('d-none')
+                        .find('input')
+                        .prop('disabled', true);
                 }
-            })
+            });
+
+            // Initialize state for merokok
+            $('input[name="merokok"]:checked').trigger('change');
+
+
 
             $('input[name="hpht"]').on('change', function() {
                 const value = $(this).val();
-                $('#hpht-ya-wrapper-date, #hpht-tidak-wrapper').addClass('d-none');
+
+                // Hide both wrappers initially
+                $('#hpht-ya-wrapper-date, #hpht-tidak-wrapper')
+                    .addClass('d-none')
+                    .find('input')
+                    .prop('disabled', true);
                 if (value == 1) {
-                    $('#hpht-ya-wrapper-date').removeClass('d-none');
+                    $('#hpht-ya-wrapper-date')
+                        .removeClass('d-none')
+                        .find('input')
+                        .prop('disabled', false);
                 } else if (value == 0) {
-                    $('#hpht-tidak-wrapper').removeClass('d-none');
+                    $('#hpht-tidak-wrapper')
+                        .removeClass('d-none')
+                        .find('input')
+                        .prop('disabled', false);
                 }
             });
+
+            // Ensure initial state is correctly set on page load
+            $('input[name="hpht"]:checked').trigger('change');
 
         });
     </script>

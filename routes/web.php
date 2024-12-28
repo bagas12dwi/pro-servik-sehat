@@ -23,11 +23,14 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/register', [AuthController::class, 'indexRegister'])->name('register');
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
+Route::get('/finish', function () {
+    return view('global.finish-submit');
+})->name('finish');
 
 // User 
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
 Route::resource('booking', BookingController::class)->names('booking');
-Route::get('/formulir', [FormulirUserController::class, 'index'])->name('formulir.user');
+Route::get('/formulir/{booking}', [FormulirUserController::class, 'index'])->name('formulir.user');
+Route::post('/formulir', [FormulirUserController::class, 'store'])->name('formulir.store');

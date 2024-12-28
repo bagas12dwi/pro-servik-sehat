@@ -39,12 +39,6 @@
         'db' => $data->saudara ?? '',
     ])
 </div>
-@include('components.form.input-text', [
-    'id' => 'name',
-    'db' => $data->name ?? '',
-    'label' => '3. Siapa yang Sakit',
-    'placeholder' => '',
-])
 @include('components.form.label', [
     'id' => 'kanker',
     'label' => '4. Kanker Apa',
@@ -68,6 +62,23 @@
 
 @push('script')
     <script>
-        $(document).ready(function() {});
+        $(document).ready(function() {
+
+            $('input[name="saudara"]').on('change', function() {
+                if ($(this).val() == 1) {
+                    $('#saudara-ya-wrapper-text').removeClass('d-none').find('input').prop(
+                        'disabled',
+                        false);
+                } else {
+                    $('#saudara-ya-wrapper-text').addClass('d-none').find('input').prop(
+                        'disabled',
+                        true);
+                }
+            });
+            $('input[name="saudara"]:checked').trigger('change');
+
+
+
+        });
     </script>
 @endpush

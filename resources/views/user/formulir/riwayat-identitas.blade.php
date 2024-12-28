@@ -173,13 +173,13 @@
                 'name' => 'pekerjaan_klien',
                 'db' => $data->pekerjaan_klien ?? '',
             ])
-            @include('components.form.input-text', [
-                'db' => $data->pekerjaan_suami ?? '',
-                'id' => 'pekerjaan_suami',
-                'label' => '5. Pekerjaan Suami',
-                'placeholder' => 'Pekerjaan Suami',
-            ])
         </div>
+        @include('components.form.input-text', [
+            'db' => $data->pekerjaan_suami ?? '',
+            'id' => 'pekerjaan_suami',
+            'label' => '5. Pekerjaan Suami',
+            'placeholder' => 'Pekerjaan Suami',
+        ])
     </div>
 </div>
 
@@ -189,29 +189,44 @@
             // Toggle input for "Menikah Ke" (Klien)
             $('input[name="status_nikah_klien"]').on('change', function() {
                 if ($(this).val() === 'Menikah Ke') {
-                    $('#status-nikah-klien-ke-wrapper').removeClass('d-none');
+                    $('#status-nikah-klien-ke-wrapper-text').removeClass('d-none').find('input').prop(
+                        'disabled',
+                        false);
                 } else {
-                    $('#status-nikah-klien-ke-wrapper').addClass('d-none');
+                    $('#status-nikah-klien-ke-wrapper-text').addClass('d-none').find('input').prop(
+                        'disabled',
+                        true);
                 }
             });
+
+            // Trigger change event for default selection
+            $('input[name="status_nikah_klien"]:checked').trigger('change');
 
             $('input[name="pekerjaan_klien"]').on('change', function() {
                 if ($(this).val() === 'Lainnya') {
-                    $('#pekerjaan-klien-lainnya-wrapper-text').removeClass('d-none');
+                    $('#pekerjaan-klien-lainnya-wrapper-text').removeClass('d-none').find('input').prop(
+                        'disabled',
+                        false);
                 } else {
-                    $('#pekerjaan-klien-lainnya-wrapper-text').addClass('d-none');
-
+                    $('#pekerjaan-klien-lainnya-wrapper-text').addClass('d-none').find('input').prop(
+                        'disabled',
+                        true);
                 }
             });
 
-            // Toggle input for "Menikah Ke" (Suami)
+            $('input[name="pekerjaan_klien"]:checked').trigger('change');
+
             $('input[name="status_nikah_suami"]').on('change', function() {
                 if ($(this).val() === 'Menikah Ke') {
-                    $('#status-nikah-suami-ke-wrapper').removeClass('d-none');
+                    $('#status-nikah-suami-ke-wrapper').removeClass('d-none').find('input').prop('disabled',
+                        false);
                 } else {
-                    $('#status-nikah-suami-ke-wrapper').addClass('d-none');
+                    $('#status-nikah-suami-ke-wrapper').addClass('d-none').find('input').prop('disabled',
+                        true);
                 }
             });
+
+            $('input[name="status_nikah_suami"]:checked').trigger('change');
         });
     </script>
 @endpush
