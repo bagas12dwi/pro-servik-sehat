@@ -13,9 +13,12 @@
                 <input type="email" class="form-control" id="floatingInput" name="email" placeholder="name@example.com">
                 <label for="floatingInput">Email address</label>
             </div>
-            <div class="form-floating">
+            <div class="form-floating position-relative">
                 <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
                 <label for="floatingPassword">Password</label>
+                <span class="position-absolute top-50 end-0 translate-middle-y me-3" style="cursor: pointer;">
+                    <i class="fa-regular fa-eye-slash" id="togglePassword"></i>
+                </span>
             </div>
             <button class="btn btn-primary w-100 py-2" type="submit">Login</button>
             <p class="my-3 text-end text-body-secondary">
@@ -24,3 +27,17 @@
         </form>
     </div>
 @endsection
+
+@push('script')
+    <script>
+        document.getElementById('togglePassword').addEventListener('click', function () {
+            const passwordField = document.getElementById('floatingPassword');
+            const icon = this;
+            const isPassword = passwordField.type === 'password';
+
+            passwordField.type = isPassword ? 'text' : 'password';
+            icon.classList.toggle('fa-eye', isPassword);
+            icon.classList.toggle('fa-eye-slash', !isPassword);
+        });
+    </script>
+@endpush
