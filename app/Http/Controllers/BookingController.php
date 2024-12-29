@@ -91,8 +91,8 @@ class BookingController extends Controller
         $validatedData['document_no'] = 'SMG' . $puskesmas->code . 'HPV' . $sequenceString;
 
         // Save the data
-        Booking::create($validatedData);
-        return redirect()->route('formulir.user')->with('success', 'Data booking berhasil disimpan. Silahkan isi formulir berikut!');
+        $booking = Booking::create($validatedData);
+        return redirect()->route('formulir.user', $booking->id)->with('success', 'Data booking berhasil disimpan. Silahkan isi formulir berikut!');
     }
 
     /**
