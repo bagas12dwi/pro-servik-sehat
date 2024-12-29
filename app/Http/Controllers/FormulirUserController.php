@@ -135,6 +135,6 @@ class FormulirUserController extends Controller
             return throw $th;
         }
 
-        return redirect()->route('formulir.user')->with('success', 'Data Formulir berhasil disimpan !');
+        return redirect()->route('finish')->with('success', 'Data Formulir berhasil disimpan !');
     }
 }
