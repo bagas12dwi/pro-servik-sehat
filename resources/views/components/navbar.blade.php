@@ -50,6 +50,9 @@
                             <li><a class="dropdown-item" href="#"><i
                                         class="fa-regular fa-user fs-6 me-1"></i>Profile</a>
                             </li>
+                            <li><a class="dropdown-item" href="{{route('booking.list')}}"><i
+                                        class="fa-solid fa-book fs-6 me-1"></i>Daftar Booking</a>
+                            </li>
                             <li><a class="dropdown-item" href="#"><i
                                         class="fa-solid fa-list-check fs-6 me-1"></i>Hasil
                                     Pemeriksaan</a></li>

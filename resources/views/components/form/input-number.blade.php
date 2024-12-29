@@ -7,7 +7,7 @@
 @endif
 
 <input type="number" class="form-control" name="{{ $id }}" id="{{ $id }}" value="{{ old($id, $db) }}"
-    placeholder="{{ $placeholder }}" {{ $readonly ?? '' }} />
+    placeholder="{{ $placeholder }}" {{ $readonly ?? '' }} {{$action == 'show' ? 'disabled' : ''}} />
 @if (isset($satuan))
     <span class="input-group-text" id="basic-addon2">{{ $satuan }}</span>
 @endif

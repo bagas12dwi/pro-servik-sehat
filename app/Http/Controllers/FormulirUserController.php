@@ -131,6 +131,11 @@ class FormulirUserController extends Controller
             HealthHistory::create($validatedDataHealth);
             FamilyHistory::create($validatedDataFamily);
             Complaint::create($validatedDataComplaint);
+
+            Booking::where('id', $bookingId)->update([
+                'status_form' => 1,
+            ]);
+            
         } catch (\Throwable $th) {
             return throw $th;
         }

@@ -1,6 +1,6 @@
 <div class="form-check">
     <input class="form-check-input" type="radio" name="{{ $name }}" value="{{ $value }}"
-        id="{{ $id }}" {{ $db == $value ? 'checked' : '' }} />
+        id="{{ $id }}" {{ $db == $value ? 'checked' : '' }} {{$action == 'show' ? 'disabled' : ''}}/>
     <label class="form-check-label" for="{{ $id }}"> {{ $label }} </label>
     <div class="{{ isset($satuan) ? 'input-group' : '' }} d-none" id="{{ $id . '-wrapper' }}">
         <input type="number" class="form-control font-control-sm" name="{{$name . '_desc'}}" disabled>

@@ -6,7 +6,14 @@
         @include('components.alert.alert')
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title text-primary mb-3">Booking Jadwal</h4>
+                @if ($action == 'show')
+                    <a href="{{ route('booking.list') }}" class="btn btn-primary mb-3">
+                        <i class="fa-solid fa-arrow-left"></i> Kembali
+                    </a>
+                    <h4 class="card-title text-primary mb-3">Detail Booking Data</h4>
+                @else
+                    <h4 class="card-title text-primary mb-3">Booking Jadwal</h4>
+                @endif
                 <form action="{{ route('booking.store') }}" method="post">
                     @csrf
                     @include('components.form.input-number', [
@@ -154,7 +161,9 @@
                         'label' => 'Tanggal Pemeriksaan',
                         'placeholder' => 'Masukkan Tanggal',
                     ])
-                    @include('components.button.btn-submit')
+                    @if ($action != 'show')
+                        @include('components.button.btn-submit')
+                    @endif
                 </form>
             </div>
         </div>

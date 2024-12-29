@@ -1,3 +1,4 @@
+
 @if (session()->has('success'))
     <div class="alert alert-success d-flex align-items-center alert-dismissible fade show border-0" role="alert">
         <i class="fa-regular fa-circle-check me-2 fs-4"></i>

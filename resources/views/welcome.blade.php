@@ -16,6 +16,12 @@
         </div>
     </section>
 
+    @auth
+        <div class="container-fluid my-3">
+            @include('components.alert.notification-index')
+        </div>
+    @endauth
+
     <section id="testimoni">
         <div class="container-fluid my-3">
             <div class="card">

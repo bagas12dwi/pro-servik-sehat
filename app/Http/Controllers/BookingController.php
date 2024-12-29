@@ -21,7 +21,8 @@ class BookingController extends Controller
         return view('user.booking.index', [
             'title' => 'Booking Jadwal Pemeriksaan',
             'locations' => $puskesmas,
-            'selectedLocation' => $selectedLocation
+            'selectedLocation' => $selectedLocation,
+            'action' => 'create'
         ]);
     }
 
@@ -100,7 +101,21 @@ class BookingController extends Controller
      */
     public function show(Booking $booking)
     {
-        //
+        return view('user.booking.index', [
+            'title' => 'Detail Booking',
+            'data' => $booking,
+            'selectedLocation' => $booking->location,
+            'locations' => HealthCenter::all(),
+            'action' => 'show'
+        ]);
+    }
+
+    public function listBooking() {
+        $bookings = Booking::where('user_id', auth()->user()->id)->get();
+        return view('user.booking.list', [
+            'title' => 'List Booking',
+            'bookings' => $bookings
+        ]);
     }
 
     /**

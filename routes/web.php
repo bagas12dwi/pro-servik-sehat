@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\FormulirUserController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use Spatie\FlareClient\View;
 
@@ -28,9 +29,8 @@ Route::get('/finish', function () {
 })->name('finish');
 
 // User 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::resource('booking', BookingController::class)->names('booking');
+Route::get('/listBooking', [BookingController::class, 'listBooking'])->name('booking.list');
 Route::get('/formulir/{booking}', [FormulirUserController::class, 'index'])->name('formulir.user');
 Route::post('/formulir', [FormulirUserController::class, 'store'])->name('formulir.store');
