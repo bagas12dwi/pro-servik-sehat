@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BookingController as AdminBookingController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\FormulirUserController;
@@ -41,4 +42,8 @@ Route::prefix('admin')->group(function () {
     Route::get('/', function () {
         return view('admin.pages.dashboard');
     })->name('admin.dashboard');
+
+    Route::get('/booking', [AdminBookingController::class, 'index'])->name('admin.booking');
+    Route::get('/booking/{booking}', [AdminBookingController::class, 'show'])->name('admin.booking.show');
+    Route::get('/form-pasien/{booking}', [AdminBookingController::class, 'showForm'])->name('admin.booking.form');
 });
