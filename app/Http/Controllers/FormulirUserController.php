@@ -20,6 +20,7 @@ class FormulirUserController extends Controller
                     return view('user.formulir.index', [
                         'title' => 'Formulir Pasien',
                         'booking' => $booking,
+                        'actiton' => 'create'
                     ]);
                 } else {
                     return redirect()->route('finish')->with('error', 'Anda sudah mengisi formulir !');
