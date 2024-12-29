@@ -178,7 +178,6 @@
             @endif
 
             @if (session()->has('error'))
-                <?xml encoding="utf-8"?>
                 <!-- Generator: Adobe Illustrator 24.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
                 <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 72 72"
