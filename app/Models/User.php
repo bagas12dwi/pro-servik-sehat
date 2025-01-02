@@ -43,4 +43,19 @@ class User extends Authenticatable
     {
         return $this->hasMany(Booking::class);
     }
+
+    public function breastExamination()
+    {
+        return $this->hasMany(BreastExamination::class);
+    }
+
+    public function ginekologiExamination()
+    {
+        return $this->hasMany(GinekologiExamination::class);
+    }
+
+    public function krioterapi()
+    {
+        return $this->hasMany(Krioterapi::class);
+    }
 }

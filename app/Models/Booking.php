@@ -24,16 +24,34 @@ class Booking extends Model
     {
         return $this->hasOne(IdentityHistory::class);
     }
-    
-    public function kesehatan() {
+
+    public function kesehatan()
+    {
         return $this->hasOne(HealthHistory::class);
     }
 
-    public function keluarga() {
+    public function keluarga()
+    {
         return $this->hasOne(FamilyHistory::class);
     }
 
-    public function keluhan() {
+    public function keluhan()
+    {
         return $this->hasOne(Complaint::class);
+    }
+
+    public function breastExamination()
+    {
+        return $this->hasOne(BreastExamination::class);
+    }
+
+    public function ginekologiExamination()
+    {
+        return $this->hasOne(GinekologiExamination::class);
+    }
+
+    public function krioterapi()
+    {
+        return $this->hasOne(Krioterapi::class);
     }
 }

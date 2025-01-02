@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container-xl">
-
+        @include('components.alert.alert')
         <div class="row g-3 mb-4 align-items-center justify-content-between">
             <div class="col-auto">
                 <h1 class="app-page-title mb-0">Daftar {{ $title }}</h1>
