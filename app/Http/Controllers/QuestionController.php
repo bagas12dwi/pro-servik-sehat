@@ -20,7 +20,7 @@ class QuestionController extends Controller
 
         // Pastikan index berada dalam rentang pertanyaan
         if ($index < 0 || $index >= $questions->count()) {
-            return redirect()->route('quiz.show', ['index' => 0]);
+            return redirect()->route('quiz', ['index' => 0]);
         }
 
         // Kirim pertanyaan saat ini ke view
