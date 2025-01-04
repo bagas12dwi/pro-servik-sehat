@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -15,9 +16,12 @@ class HomeController extends Controller
             ->pluck('inspection_date')
             ->first();
 
+        $testimonials = Testimonial::orderBy('testimonial_date', 'desc')->get();
+
         return view('welcome', [
             'title' => 'Home',
             'bookingDate' => $bookingDate ?? '',
+            'testimonials' => $testimonials
         ]);
     }
 }
