@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\FormulirUserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\QuestionController;
 use Illuminate\Support\Facades\Route;
 use Spatie\FlareClient\View;
 
@@ -36,6 +37,7 @@ Route::resource('booking', BookingController::class)->names('booking');
 Route::get('/listBooking', [BookingController::class, 'listBooking'])->name('booking.list');
 Route::get('/formulir/{booking}', [FormulirUserController::class, 'index'])->name('formulir.user');
 Route::post('/formulir', [FormulirUserController::class, 'store'])->name('formulir.store');
+Route::get('quiz/{index?}', [QuestionController::class, 'index'])->name('quiz');
 
 
 // Admin 

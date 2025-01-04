@@ -9,11 +9,12 @@
                 <div class="container">
                     <p>E-Liminate Optimalisasi Implementasi Deteksi Dini Kanker Leher Rahim dengan apps berbasis website
                         yang proaktif dan terintegrasi Puskesmas Rowosari Kota Semarang.</p>
-                    <p>Update informasi seputar kanker leher rahim (serviks), booking jadwal periksa DNA HPV co-testing IVA,
+                    <p>Update informasi seputar kanker leher rahim (serviks), booking jadwal periksa DNA HPV <span
+                            class="fst-italic">co-testing</span> IVA,
                         lacak hasil sampel DNA HPV, chat bidan dan dokter, deteksi mandiri faktor resiko dan pengetahuan
                         kanker serviks dan kesehatan, semua bisa di E-Liminate!</p>
                 </div>
-                <a href="#" class="btn btn-primary">Mulai Quiz</a>
+                <a href="{{ route('quiz') }}" class="btn btn-primary">Mulai Quiz</a>
             </div>
         </div>
     </section>

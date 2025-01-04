@@ -1,121 +1,200 @@
 :root {
-    --color-primary: #07BEB8;
+    --color-primary: #07beb8;
     --color-primary-hover: #01a5a0;
-    --color-primary-border: #07BEB8;
+    --color-primary-border: #07beb8;
     --color-secondary: #007985;
     --color-secondary-hover: #005e66;
     --color-secondary-border: #007985;
-    --color-third: #1C2541;
+    --color-third: #1c2541;
     --color-third-hover: #121829;
-    --color-third-border: #1C2541;
-    --color-blue: #C2DCF7;
-    --color-cream: #F2DDD8;
-    --color-grey: #E1E6EA;
+    --color-third-border: #1c2541;
+    --color-blue: #c2dcf7;
+    --color-cream: #f2ddd8;
+    --color-grey: #e1e6ea;
 }
 
-body{
-    background-color: #DCDCDC;
+body {
+    background-color: #dcdcdc;
 }
 
 .btn-primary {
     color: #fff; /* Text color */
-    background-color: var(--color-primary)!important; /* Background color */
-    border-color: var(--color-primary)!important; /* Border color */
+    background-color: var(--color-primary) !important; /* Background color */
+    border-color: var(--color-primary) !important; /* Border color */
 }
 
 .btn-primary:hover {
-    color: #fff!important; /* Text color on hover */
-    background-color: var(--color-primary-hover)!important; /* Background color on hover */
-    border-color: var(--color-primary-border)!important; /* Border color on hover */
+    color: #fff !important; /* Text color on hover */
+    background-color: var(
+        --color-primary-hover
+    ) !important; /* Background color on hover */
+    border-color: var(
+        --color-primary-border
+    ) !important; /* Border color on hover */
 }
 
-.btn-primary:focus, .btn-primary.focus {
-    color: #fff!important;
-    background-color: var(--color-primary-hover)!important;
-    border-color: var(--color-primary-border)!important;
-    box-shadow: 0 0 0 0.25rem rgba(147, 135, 207, 0.5)!important; /* Focus ring */
+.btn-primary:focus,
+.btn-primary.focus {
+    color: #fff !important;
+    background-color: var(--color-primary-hover) !important;
+    border-color: var(--color-primary-border) !important;
+    box-shadow: 0 0 0 0.25rem rgba(147, 135, 207, 0.5) !important; /* Focus ring */
 }
 
-.btn-primary:active, .btn-primary.active {
-    color: #fff!important;
-    background-color: var(--color-primary-border)!important;
-    border-color: var(--color-primary-border)!important;
+.btn-primary:active,
+.btn-primary.active {
+    color: #fff !important;
+    background-color: var(--color-primary-border) !important;
+    border-color: var(--color-primary-border) !important;
 }
 
-.btn-primary.disabled, .btn-primary:disabled {
-    color: #fff!important;
-    background-color: var(--color-primary)!important;
-    border-color: var(--color-primary)!important;
+.btn-primary.disabled,
+.btn-primary:disabled {
+    color: #fff !important;
+    background-color: var(--color-primary-hover) !important;
+    border-color: var(--color-primary-hover) !important;
+}
+
+.btn-outline-primary {
+    color: var(--color-primary); /* Warna teks (biru utama Bootstrap) */
+    border-color: var(--color-primary); /* Warna border */
+}
+
+.btn-outline-primary:hover {
+    color: #fff; /* Warna teks saat hover */
+    background-color: var(
+        --color-primary
+    ); /* Warna latar belakang saat hover */
+    border-color: var(--color-primary); /* Warna border saat hover */
+}
+
+.btn-outline-primary:focus,
+.btn-outline-primary.focus {
+    color: #fff; /* Warna teks saat fokus */
+    background-color: var(
+        --color-primary
+    ); /* Warna latar belakang saat fokus */
+    box-shadow: 0 0 0 0.25rem rgba(7, 190, 184, 0.5); /* Efek bayangan fokus */
+}
+
+.btn-outline-primary:active,
+.btn-outline-primary.active,
+.show > .btn-outline-primary.dropdown-toggle {
+    color: #fff; /* Warna teks saat aktif */
+    background-color: var(
+        --color-primary-hover
+    ); /* Warna latar belakang saat aktif */
+    border-color: var(--color-primary-hover); /* Warna border saat aktif */
+}
+
+.btn-outline-primary:active:focus,
+.btn-outline-primary.active:focus,
+.show > .btn-outline-primary.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.25rem rgba(7, 190, 184, 0.5); /* Efek bayangan saat aktif dan fokus */
+}
+
+.btn-outline-primary:disabled,
+.btn-outline-primary.disabled {
+    color: var(--color-primary-hover); /* Warna teks saat disabled */
+    background-color: transparent; /* Latar belakang tetap transparan */
+}
+
+.btn-check:checked + .btn,
+.btn.active,
+.btn.show,
+.btn:first-child:active,
+:not(.btn-check) + .btn:active {
+    color: #fff;
+    background-color: var(--color-secondary);
+    border-color: var(--color-secondary-border);
 }
 
 .btn-secondary {
     color: #fff; /* Text color */
-    background-color: var(--color-secondary)!important; /* Background color */
-    border-color: var(--color-secondary)!important; /* Border color */
+    background-color: var(--color-secondary) !important; /* Background color */
+    border-color: var(--color-secondary) !important; /* Border color */
 }
 
 .btn-secondary:hover {
-    color: #fff!important; /* Text color on hover */
-    background-color: var(--color-secondary-hover)!important; /* Background color on hover */
-    border-color: var(--color-secondary-border)!important; /* Border color on hover */
+    color: #fff !important; /* Text color on hover */
+    background-color: var(
+        --color-secondary-hover
+    ) !important; /* Background color on hover */
+    border-color: var(
+        --color-secondary-border
+    ) !important; /* Border color on hover */
 }
 
-.btn-secondary:focus, .btn-secondary.focus {
-    color: #fff!important;
-    background-color: var(--color-secondary-hover)!important;
-    border-color: var(--color-secondary-border)!important;
-    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.5)!important; /* Focus ring */
+.btn-secondary:focus,
+.btn-secondary.focus {
+    color: #fff !important;
+    background-color: var(--color-secondary-hover) !important;
+    border-color: var(--color-secondary-border) !important;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.5) !important; /* Focus ring */
 }
 
-.btn-secondary:active, .btn-secondary.active {
-    color: #fff!important;
-    background-color: var(--color-secondary-border)!important;
-    border-color: var(--color-secondary-border)!important;
+.btn-secondary:active,
+.btn-secondary.active {
+    color: #fff !important;
+    background-color: var(--color-secondary-border) !important;
+    border-color: var(--color-secondary-border) !important;
 }
 
-.btn-secondary.disabled, .btn-secondary:disabled {
-    color: #fff!important;
-    background-color: var(--color-secondary)!important;
-    border-color: var(--color-secondary)!important;
+.btn-secondary.disabled,
+.btn-secondary:disabled {
+    color: #fff !important;
+    background-color: var(--color-secondary) !important;
+    border-color: var(--color-secondary) !important;
 }
 
 .btn-third {
     color: #fff; /* Text color */
-    background-color: var(--color-third)!important; /* Background color */
-    border-color: var(--color-third)!important; /* Border color */
+    background-color: var(--color-third) !important; /* Background color */
+    border-color: var(--color-third) !important; /* Border color */
 }
 
 .btn-third:hover {
-    color: #fff!important; /* Text color on hover */
-    background-color: var(--color-third-hover)!important; /* Background color on hover */
-    border-color: var(--color-third-border)!important; /* Border color on hover */
+    color: #fff !important; /* Text color on hover */
+    background-color: var(
+        --color-third-hover
+    ) !important; /* Background color on hover */
+    border-color: var(
+        --color-third-border
+    ) !important; /* Border color on hover */
 }
 
-.btn-third:focus, .btn-third.focus {
-    color: #fff!important;
-    background-color: var(--color-third-hover)!important;
-    border-color: var(--color-third-border)!important;
-    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.5)!important; /* Focus ring */
+.btn-third:focus,
+.btn-third.focus {
+    color: #fff !important;
+    background-color: var(--color-third-hover) !important;
+    border-color: var(--color-third-border) !important;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.5) !important; /* Focus ring */
 }
 
-.btn-third:active, .btn-third.active {
-    color: #fff!important;
-    background-color: var(--color-third-border)!important;
-    border-color: var(--color-third-border)!important;
+.btn-third:active,
+.btn-third.active {
+    color: #fff !important;
+    background-color: var(--color-third-border) !important;
+    border-color: var(--color-third-border) !important;
 }
 
-.btn-third.disabled, .btn-third:disabled {
-    color: #fff!important;
-    background-color: var(--color-third)!important;
-    border-color: var(--color-third)!important;
+.btn-third.disabled,
+.btn-third:disabled {
+    color: #fff !important;
+    background-color: var(--color-third) !important;
+    border-color: var(--color-third) !important;
 }
 
-.text-primary{
-    color: var(--color-primary)!important;
+.text-primary {
+    color: var(--color-primary) !important;
 }
 
 .bg-primary {
     background-color: var(--color-primary) !important;
+}
+
+.bg-third {
+    background-color: var(--color-third) !important;
 }
 
 .bg-secondary {
@@ -133,7 +212,7 @@ body{
 
 .jumbotron {
     position: relative;
-    background: url('/assets/img/jumbotron.jpg') center center/cover no-repeat;
+    background: url("/assets/img/jumbotron.jpg") center center/cover no-repeat;
     color: white;
     height: 600px;
     display: flex;
@@ -159,7 +238,7 @@ body{
 
 .hero {
     position: relative;
-    background: url('/assets/img/jumbotron.jpg') center center/cover no-repeat;
+    background: url("/assets/img/jumbotron.jpg") center center/cover no-repeat;
     color: white;
     height: 300px;
     display: flex;
