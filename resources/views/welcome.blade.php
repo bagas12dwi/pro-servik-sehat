@@ -29,7 +29,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="text-bold text-primary mb-3 card-title"><i class="fa-regular fa-comments"></i> Testimoni</h4>
-                    <div class="row mb-3">
+                    <div class="row mb-3 justify-content-center">
                         @foreach ($testimonials as $testimonial)
                             <div class="col-lg-4 col-md-4 col-sm-6">
                                 <div class="card" style="max-width: 540px; height: 200px; margin: auto;">
