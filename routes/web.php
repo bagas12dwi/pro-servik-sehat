@@ -2,10 +2,13 @@
 
 use App\Http\Controllers\Admin\BookingController as AdminBookingController;
 use App\Http\Controllers\Admin\FormulirAdminController;
+use App\Http\Controllers\Admin\ResultFormController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\FormulirUserController;
+use App\Http\Controllers\HasilPemeriksaanController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PrintController;
 use App\Http\Controllers\QuestionController;
 use Illuminate\Support\Facades\Route;
 use Spatie\FlareClient\View;
@@ -31,12 +34,17 @@ Route::get('/finish', function () {
     return view('global.finish-submit');
 })->name('finish');
 
+// Print 
+Route::get('/print/{booking}', [PrintController::class, 'formulir'])->name('print');
+
 // User 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::resource('booking', BookingController::class)->names('booking');
-Route::get('/listBooking', [BookingController::class, 'listBooking'])->name('booking.list');
+Route::get('/list-booking', [BookingController::class, 'listBooking'])->name('booking.list');
 Route::get('/formulir/{booking}', [FormulirUserController::class, 'index'])->name('formulir.user');
 Route::post('/formulir', [FormulirUserController::class, 'store'])->name('formulir.store');
+Route::get('/hasil-pemeriksaan', [HasilPemeriksaanController::class, 'index'])->name('hasil-pemeriksaan');
+Route::get('/hasil-pemeriksaan/{booking}', [HasilPemeriksaanController::class, 'show'])->name('hasil-pemeriksaan.show');
 Route::get('quiz/{index?}', [QuestionController::class, 'index'])->name('quiz');
 
 
@@ -51,4 +59,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/form-pasien/{booking}', [AdminBookingController::class, 'showForm'])->name('admin.booking.form');
     Route::get('/formulir/{booking}', [FormulirAdminController::class, 'index'])->name('admin.formulir');
     Route::post('/formulir', [FormulirAdminController::class, 'store'])->name('admin.formulir.store');
+    Route::get('/hasil-pemeriksaan', [ResultFormController::class, 'index'])->name('admin.hasil-pemeriksaan');
+    Route::get('/hasil-pemeriksaan/{booking}', [ResultFormController::class, 'show'])->name('admin.hasil-pemeriksaan.show');
+    Route::put('/hasil-pemeriksaan/update/{booking}', [ResultFormController::class, 'update'])->name('admin.hasil-pemeriksaan.update');
 });

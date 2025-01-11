@@ -105,7 +105,7 @@ class FormulirAdminController extends Controller
                 'status_form' => 2,
             ]);
 
-            return redirect()->route('admin.booking')->with('success', 'Formulir berhasil disimpan !');
+            return redirect()->route('print', $bookingId)->with('success', 'Formulir Berhasil Disimpan');
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             return redirect()->route('finish')->with('error', 'Terjadi kesalahan !');
         }

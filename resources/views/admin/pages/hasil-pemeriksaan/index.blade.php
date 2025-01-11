@@ -90,6 +90,9 @@
                                 <th class="cell">
                                     <nobr>Provinsi</nobr>
                                 </th>
+                                <th class="cell">
+                                    Status
+                                </th>
                                 <th class="cell">Aksi</th>
                             </tr>
                         </thead>
@@ -135,12 +138,40 @@
                                     <td class="cell">
                                         <nobr>{{ $booking->province }}</nobr>
                                     </td>
+                                    <td class="cell">
+                                        @php
+                                            $status_text = '';
+                                            $color_badge = '';
+                                            if ($booking->result_form == 0) {
+                                                $color_badge = 'text-bg-primary';
+                                                $status_text = 'Pengambilan Sampel';
+                                            } elseif ($booking->result_form == 1) {
+                                                $color_badge = 'text-bg-info';
+                                                $status_text = 'Pengiriman Sampel Ke Laborat';
+                                            } elseif ($booking->result_form == 2) {
+                                                $color_badge = 'text-bg-warning';
+                                                $status_text = 'Analisa Sampel';
+                                            } elseif ($booking->result_form == 3) {
+                                                $color_badge = 'text-bg-dark';
+                                                $status_text = 'Validasi Hasil Sampel';
+                                            } elseif ($booking->result_form == 4) {
+                                                $color_badge = 'text-bg-secondary';
+                                                $status_text = 'Informasi Hasil Sampel';
+                                            } elseif ($booking->result_form == 5) {
+                                                $color_badge = 'text-bg-danger';
+                                                $status_text = 'Tindak Lanjut';
+                                            }
+                                        @endphp
+                                        <nobr><span
+                                                class="badge rounded-pill {{ $color_badge }} text-white">{{ $status_text }}</span>
+                                        </nobr>
+                                    </td>
                                     <td class="cell"><a class="btn-sm app-btn-secondary"
-                                            href="{{ route('admin.booking.show', $booking->id) }}">View</a></td>
+                                            href="{{ route('admin.hasil-pemeriksaan.show', $booking->id) }}">View</a></td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="14" class="text-center">
+                                    <td colspan="15" class="text-center">
                                         Belum Ada Data Booking
                                     </td>
                                 </tr>

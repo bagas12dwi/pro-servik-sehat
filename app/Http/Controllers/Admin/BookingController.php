@@ -11,7 +11,7 @@ class BookingController extends Controller
 {
     public function index()
     {
-        $booking = Booking::orderby('created_at', 'desc')->paginate(10);
+        $booking = Booking::where('status_form', '!=', '2')->orderby('created_at', 'desc')->paginate(10);
         return view('admin.pages.booking.index', [
             'title' => 'Booking',
             'bookings' => $booking,
@@ -29,7 +29,8 @@ class BookingController extends Controller
         ]);
     }
 
-    public function showForm(Booking $booking) {
+    public function showForm(Booking $booking)
+    {
         return view('admin.pages.booking.form-pasien', [
             'title' => 'Formulir',
             'data' => $booking->load(['identityHistory', 'kesehatan', 'keluarga', 'keluhan']),

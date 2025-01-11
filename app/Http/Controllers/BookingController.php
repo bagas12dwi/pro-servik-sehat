@@ -110,8 +110,9 @@ class BookingController extends Controller
         ]);
     }
 
-    public function listBooking() {
-        $bookings = Booking::where('user_id', auth()->user()->id)->get();
+    public function listBooking()
+    {
+        $bookings = Booking::where('user_id', auth()->user()->id)->where('status_form', '!=', 2)->get();
         return view('user.booking.list', [
             'title' => 'List Booking',
             'bookings' => $bookings

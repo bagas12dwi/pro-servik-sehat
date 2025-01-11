@@ -7,9 +7,10 @@
         <div class="card">
             <div class="card-body">
                 @if ($action == 'show')
-                    <a href="{{ route('booking.list') }}" class="btn btn-primary mb-3">
+                    <a href="{{ url()->previous() }}" class="btn btn-primary mb-3">
                         <i class="fa-solid fa-arrow-left"></i> Kembali
                     </a>
+                    @yield('progress')
                     <h4 class="card-title text-primary mb-3">Detail Booking Data</h4>
                 @else
                     <h4 class="card-title text-primary mb-3">Booking Jadwal</h4>

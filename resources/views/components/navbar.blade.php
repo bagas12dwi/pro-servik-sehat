@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
-            <img  src="{{ URL::asset('/assets/img/logo-type.png') }}" alt="" width="200">
+            <img src="{{ URL::asset('/assets/img/logo-type.png') }}" alt="" width="200">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,10 +50,10 @@
                             <li><a class="dropdown-item" href="#"><i
                                         class="fa-regular fa-user fs-6 me-1"></i>Profile</a>
                             </li>
-                            <li><a class="dropdown-item" href="{{route('booking.list')}}"><i
+                            <li><a class="dropdown-item" href="{{ route('booking.list') }}"><i
                                         class="fa-solid fa-book fs-6 me-1"></i>Daftar Booking</a>
                             </li>
-                            <li><a class="dropdown-item" href="#"><i
+                            <li><a class="dropdown-item" href="{{ route('hasil-pemeriksaan') }}"><i
                                         class="fa-solid fa-list-check fs-6 me-1"></i>Hasil
                                     Pemeriksaan</a></li>
                             <li>
