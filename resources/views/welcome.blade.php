@@ -54,4 +54,33 @@
             </div>
         </div>
     </section>
+
+    <section id="artikel">
+        <div class="container-fluid my-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="text-bold text-primary mb-3 card-title"><i class="fa-regular fa-comments"></i> Artikel</h4>
+                    <div class="row mb-3 justify-content-center">
+                        @foreach ($articles as $article)
+                            <div class="col-lg-3 col-md-3 col-sm-6">
+                                <div class="card" style="width: 18rem;">
+                                    <img src="{{ URL::asset('storage/' . $article->thumbnails) }}" class="card-img-top">
+                                    <div class="card-body">
+                                        <h5 class="card-title d-inline-block text-truncate" style="width: 15rem">
+                                            {{ $article->title }}</h5>
+                                        <p class="card-text fst-italic" style="font-size: 10pt">Oleh {{ $article->name }}
+                                        </p>
+                                        <p class="card-text fst-italic" style="font-size: 8pt">
+                                            {{ $article->created_at->diffForHumans() }}</p>
+                                        <a href="{{ route('artikel.show', $article->slug) }}" class="btn btn-primary">Lihat
+                                            Selengkapnya</a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 @endsection

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\BookingController as AdminBookingController;
 use App\Http\Controllers\Admin\FormulirAdminController;
 use App\Http\Controllers\Admin\ResultFormController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\FormulirUserController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\HasilPemeriksaanController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PrintController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\TestimonialController;
 use Illuminate\Support\Facades\Route;
 use Spatie\FlareClient\View;
 
@@ -46,6 +48,7 @@ Route::post('/formulir', [FormulirUserController::class, 'store'])->name('formul
 Route::get('/hasil-pemeriksaan', [HasilPemeriksaanController::class, 'index'])->name('hasil-pemeriksaan');
 Route::get('/hasil-pemeriksaan/{booking}', [HasilPemeriksaanController::class, 'show'])->name('hasil-pemeriksaan.show');
 Route::get('quiz/{index?}', [QuestionController::class, 'index'])->name('quiz');
+Route::get('artikel/{artikel}', [ArticleController::class, 'showArticle'])->name('artikel.show');
 
 
 // Admin 
@@ -62,4 +65,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/hasil-pemeriksaan', [ResultFormController::class, 'index'])->name('admin.hasil-pemeriksaan');
     Route::get('/hasil-pemeriksaan/{booking}', [ResultFormController::class, 'show'])->name('admin.hasil-pemeriksaan.show');
     Route::put('/hasil-pemeriksaan/update/{booking}', [ResultFormController::class, 'update'])->name('admin.hasil-pemeriksaan.update');
+    Route::resource('/testimoni', TestimonialController::class)->names('admin.testimoni');
+    Route::resource('/artikel', ArticleController::class)->names('admin.artikel');
+    Route::post('/artikel/upload', [ArticleController::class, 'upload']);
 });
