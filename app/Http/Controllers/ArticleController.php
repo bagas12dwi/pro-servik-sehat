@@ -14,11 +14,34 @@ class ArticleController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $query = Article::orderBy('created_at', 'DESC');
+
+        // Apply search filter
+        if ($request->has('searchorders') && $request->searchorders) {
+            $query->where('name', 'like', '%' . $request->searchorders . '%')
+                ->orWhere('title', 'like', '%' . $request->searchorders . '%');
+        }
+
+        // Apply year filter
+        if ($request->has('year') && $request->year) {
+            $query->whereYear('created_at', $request->year);
+        }
+
+        // Fetch distinct years for filtering
+        $years = Article::selectRaw('YEAR(created_at) as year')
+            ->distinct()
+            ->orderBy('year', 'desc')
+            ->pluck('year');
+
+        $articles = $query->paginate(10);
+
+
         return view('admin.pages.article.index', [
             'title' => 'Artikel',
-            'articles' => Article::orderBy('id', 'desc')->paginate(10)
+            'articles' => $articles,
+            'years' => $years
         ]);
     }
 

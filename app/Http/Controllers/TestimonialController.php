@@ -14,12 +14,33 @@ class TestimonialController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $testimonials = Testimonial::orderBy('created_at', 'DESC')->paginate(10);
+        $query = Testimonial::orderBy('testimonial_date', 'DESC');
+
+        // Apply search filter
+        if ($request->has('searchorders') && $request->searchorders) {
+            $query->where('name', 'like', '%' . $request->searchorders . '%');
+        }
+
+        // Apply year filter
+        if ($request->has('year') && $request->year) {
+            $query->whereYear('testimonial_date', $request->year);
+        }
+
+        // Fetch distinct years for filtering
+        $years = Testimonial::selectRaw('YEAR(testimonial_date) as year')
+            ->distinct()
+            ->orderBy('year', 'desc')
+            ->pluck('year');
+
+        $testimonials = $query->paginate(10);
+
+
         return view('admin.pages.testimoni.index', [
             'title' => 'Testimoni',
             'testimonials' => $testimonials, // This is correct
+            'years' => $years
         ]);
     }
 
