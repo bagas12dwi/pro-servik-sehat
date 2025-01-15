@@ -96,8 +96,8 @@ class ResultFormController extends Controller
 
         $sendwa = UrlHelper::sendWA($booking->phone_number, $message);
 
-        // return redirect($sendwa);
-        session()->flash('whatsapp_link', $sendwa);
+        return redirect($sendwa);
+        // session()->flash('whatsapp_link', $sendwa);
         return redirect()->route('admin.hasil-pemeriksaan')->with('success', 'Progress Sampel ' . $booking->name . ' berhasil di perbarui!');
     }
 }
