@@ -63,7 +63,7 @@
                                     perangkat yang
                                     terhubung dengan internet.</li>
                             </ul>
-                            <a href="" class="btn btn-primary">Hubungi Kontak</a>
+                            <a href="https://wa.me/6285713255366" target="_blank" class="btn btn-primary">Hubungi Kontak</a>
                         </div>
                     </div>
                 </div>
