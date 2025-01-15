@@ -167,7 +167,7 @@
 <tr>
     <td colspan="4" style="vertical-align: middle">
         <input type="checkbox" style="vertical-align: middle; margin: 0; padding: 0;"
-            {{ $booking->breastExamination->sadanis === 'Payudara Normal' ? 'checked' : '' }} />
+            {{ $booking->breastExamination->payudara_normal === 'Payudara Normal' ? 'checked' : '' }} />
         <label style="vertical-align: middle; margin: 0; padding: 0;">Payudara Normal</label>
         <input type="checkbox" style="vertical-align: middle; margin: 0; padding: 0;"
             {{ $booking->breastExamination->sadanis === 'Anjuran SADARI per bulan' ? 'checked' : '' }} />

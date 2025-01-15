@@ -284,8 +284,8 @@
             'id' => 'sadanis-normal',
             'label' => 'Payudara Normal',
             'value' => 'Payudara Normal',
-            'name' => 'sadanis',
-            'db' => $data->sadanis ?? '',
+            'name' => 'payudara_normal',
+            'db' => $data->payudara_normal ?? '',
         ])
         @include('components.form.input-radio', [
             'id' => 'sadanis-anjuran',

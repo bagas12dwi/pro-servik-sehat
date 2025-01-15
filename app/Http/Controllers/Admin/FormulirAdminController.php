@@ -7,6 +7,7 @@ use App\Models\Booking;
 use App\Models\BreastExamination;
 use App\Models\GinekologiExamination;
 use App\Models\Krioterapi;
+use App\Models\ResultFormUpdate;
 use Illuminate\Http\Request;
 
 class FormulirAdminController extends Controller
@@ -103,6 +104,11 @@ class FormulirAdminController extends Controller
 
             Booking::where('id', $bookingId)->update([
                 'status_form' => 2,
+            ]);
+
+            ResultFormUpdate::create([
+                'booking_id' => $bookingId,
+                'result_form' => 0
             ]);
 
             return redirect()->route('print', $bookingId)->with('success', 'Formulir Berhasil Disimpan');

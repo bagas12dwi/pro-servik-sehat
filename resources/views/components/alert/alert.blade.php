@@ -1,4 +1,9 @@
-
+@if (session('whatsapp_link'))
+    <script type="text/javascript">
+        // Open WhatsApp link in a new tab
+        window.open("{{ session('whatsapp_link') }}", "_blank");
+    </script>
+@endif
 @if (session()->has('success'))
     <div class="alert alert-success d-flex align-items-center alert-dismissible fade show border-0" role="alert">
         <i class="fa-regular fa-circle-check me-2 fs-4"></i>

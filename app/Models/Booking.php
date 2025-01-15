@@ -54,4 +54,9 @@ class Booking extends Model
     {
         return $this->hasOne(Krioterapi::class);
     }
+
+    public function resultFormUpdate()
+    {
+        return $this->hasMany(ResultFormUpdate::class);
+    }
 }
