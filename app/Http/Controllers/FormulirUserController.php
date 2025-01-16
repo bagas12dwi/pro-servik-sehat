@@ -15,7 +15,7 @@ class FormulirUserController extends Controller
     {
         try {
             $booking = Booking::findOrFail($bookingId);
-            if ($booking->user_id == auth()->user()->id) {  
+            if ($booking->user_id == auth()->user()->id) {
                 if ($booking->status_form == 0) {
                     return view('user.formulir.index', [
                         'title' => 'Formulir Pasien',
@@ -95,6 +95,7 @@ class FormulirUserController extends Controller
                 'saudara' => 'nullable',
                 'saudara_desc' => 'nullable',
                 'kanker' => 'nullable',
+                'kanker_desc' => 'nullable'
             ]);
 
             $validatedDataComplaint = $request->validate([
@@ -136,7 +137,6 @@ class FormulirUserController extends Controller
             Booking::where('id', $bookingId)->update([
                 'status_form' => 1,
             ]);
-            
         } catch (\Throwable $th) {
             return throw $th;
         }

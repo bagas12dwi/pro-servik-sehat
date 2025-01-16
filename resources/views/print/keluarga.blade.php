@@ -37,4 +37,10 @@
         <label style="vertical-align: middle; margin: 0; padding: 0;">Tidak Tahu </label>
         <input type="checkbox" style="vertical-align: middle; margin: 0; padding: 0;"
             {{ $booking->keluarga->kanker === '1' ? 'checked' : '' }} />
-        <label style="vertical-align: middle; margin: 0; padding: 0;">Kanker</label>
+        <label style="vertical-align: middle; margin: 0; padding: 0;">Kanker,
+            @if (!$booking->keluarga->kanker_desc)
+                ...
+            @else
+                {{ $booking->keluarga->kanker_desc }}
+            @endif
+        </label>

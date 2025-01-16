@@ -51,6 +51,7 @@
         'value' => 1,
         'name' => 'kanker',
         'db' => $data->keluarga->kanker ?? '',
+        'dbDesc' => $data->keluarga->kanker_desc ?? '',
     ])
     @include('components.form.input-radio', [
         'id' => 'kanker-tidak',

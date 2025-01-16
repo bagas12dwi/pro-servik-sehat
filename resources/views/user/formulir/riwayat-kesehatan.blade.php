@@ -249,7 +249,7 @@
         </div>
         @include('components.form.label', [
             'id' => 'pap-smear',
-            'label' => '10. Pernah Pap Smear',
+            'label' => '10. Pernah Pap Smear (5 Tahun Terakhir)',
         ])
         <div class="ms-3 d-flex gap-2 flex-wrap">
             @include('components.form.input-radio', [
@@ -269,7 +269,7 @@
         </div>
         @include('components.form.label', [
             'id' => 'test-iva',
-            'label' => '11. Pernah Test IVA',
+            'label' => '11. Pernah Test IVA (1 Minggu Terakhir)',
         ])
         <div class="ms-3 d-flex gap-2 flex-wrap">
             @include('components.form.input-radio', [
@@ -383,17 +383,17 @@
                 if ($(this).is(':checked')) {
                     if (id !== 'normal' && id !== 'caesar' && id !== 'keguguran') {
                         $('#' + showId).removeClass('d-none').find('input')
-                        .prop('disabled', false);
+                            .prop('disabled', false);
                         $(this).val(1);
                     }
                     $(this).val(1);
                 } else if (id === 'normal' && id === 'caesar' && id === 'keguguran') {
                     $('#' + showId).removeClass('d-none').find('input')
-                    .prop('disabled', false);
+                        .prop('disabled', false);
                 } else if (id !== 'normal' && id !== 'caesar' && id !== 'keguguran') {
                     $('#' + showId).addClass('d-none')
-                    .find('input')
-                    .prop('disabled', true);
+                        .find('input')
+                        .prop('disabled', true);
                     $(this).val(0);
                 }
             });

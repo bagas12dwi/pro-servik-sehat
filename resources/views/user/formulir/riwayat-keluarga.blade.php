@@ -77,7 +77,18 @@
             });
             $('input[name="saudara"]:checked').trigger('change');
 
-
+            $('input[name="kanker"]').on('change', function() {
+                if ($(this).val() == 1) {
+                    $('#kanker-ya-wrapper-text').removeClass('d-none').find('input').prop(
+                        'disabled',
+                        false);
+                } else {
+                    $('#kanker-ya-wrapper-text').addClass('d-none').find('input').prop(
+                        'disabled',
+                        true);
+                }
+            });
+            $('input[name="kanker"]:checked').trigger('change');
 
         });
     </script>

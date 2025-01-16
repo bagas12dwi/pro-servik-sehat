@@ -26,9 +26,10 @@
                     Ditulis Oleh {{ $article->name }} <span class="author-dot"></span>
                     {{ $article->created_at->diffForHumans() }}
                 </p>
-                <p>
+                <p style="text-align: justify;">
                     {!! $article->content !!}
                 </p>
+
             </div>
         </div>
     </div>
