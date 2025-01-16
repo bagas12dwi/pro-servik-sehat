@@ -11,9 +11,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
-    <meta name="description" content="Portal - Bootstrap 5 Admin Dashboard Template For Developers">
-    <meta name="author" content="Xiaoying Riley at 3rd Wave Media">
-    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="description" content="E-Liminate Dashboard">
+    <meta name="author" content="E-Liminate">
+    <link rel="icon" href="{{ URL::asset('assets/img/logo-gram.png') }}" type="image/png">
+    <link rel="apple-touch-icon" href="{{ URL::asset('assets/img/logo-gram.png') }}">
 
     <!-- FontAwesome JS-->
     <script defer src="{{ URL::asset('assets/admin/plugins/fontawesome/js/all.min.js') }}"></script>
