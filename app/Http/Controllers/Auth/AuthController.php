@@ -77,7 +77,7 @@ class AuthController extends Controller
         if ($level == 'admin') {
             if (Auth::attempt(['email' => $input['email'], 'password' => $input['password']])) {
                 $request->session()->regenerate();
-                return redirect()->route('dashboard');
+                return redirect()->route('admin.dashboard');
             }
             return back()->with('error', 'Email atau Password tidak sesuai !');
         } elseif ($level == 'user') {

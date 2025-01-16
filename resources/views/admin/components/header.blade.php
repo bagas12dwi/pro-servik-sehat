@@ -16,7 +16,7 @@
                     </div><!--//col-->
 
                     <div class="app-utilities col-auto">
-                        <div class="app-utility-item app-notifications-dropdown dropdown">
+                        {{-- <div class="app-utility-item app-notifications-dropdown dropdown">
                             <a class="dropdown-toggle no-toggle-arrow" id="notifications-dropdown-toggle"
                                 data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"
                                 title="Notifications">
@@ -121,7 +121,7 @@
                                 </div>
 
                             </div><!--//dropdown-menu-->
-                        </div><!--//app-utility-item-->
+                        </div><!--//app-utility-item--> --}}
                         {{-- <div class="app-utility-item">
                             <a href="{{ route('setting') }}" title="Settings">
                                 <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
@@ -138,14 +138,19 @@
                         <div class="app-utility-item app-user-dropdown dropdown">
                             <a class="dropdown-toggle" id="user-dropdown-toggle" data-bs-toggle="dropdown"
                                 href="#" role="button" aria-expanded="false"><img
-                                    src="{{ URL::asset('assets/admin/images/user.png') }}" alt="user profile"></a>
+                                    src="{{ URL::asset('assets/img/default-profile.png') }}" alt="user profile"></a>
                             <ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">
                                 {{-- <li><a class="dropdown-item" href="{{ route('account') }}">Account</a></li>
                                 <li><a class="dropdown-item" href="{{ route('setting') }}">Settings</a></li> --}}
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="#">Log Out</a></li>
+                                <form id="logout-form" action="{{ route('logout') }}" method="post"
+                                    style="display: none;">
+                                    @csrf
+                                </form>
+                                <li><a class="dropdown-item"
+                                        onclick="document.getElementById('logout-form').submit();">Log Out</a></li>
                             </ul>
                         </div><!--//app-user-dropdown-->
                     </div><!--//app-utilities-->

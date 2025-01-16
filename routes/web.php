@@ -41,18 +41,20 @@ Route::get('/print/{booking}', [PrintController::class, 'formulir'])->name('prin
 
 // User 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::resource('booking', BookingController::class)->names('booking');
-Route::get('/list-booking', [BookingController::class, 'listBooking'])->name('booking.list');
-Route::get('/formulir/{booking}', [FormulirUserController::class, 'index'])->name('formulir.user');
-Route::post('/formulir', [FormulirUserController::class, 'store'])->name('formulir.store');
-Route::get('/hasil-pemeriksaan', [HasilPemeriksaanController::class, 'index'])->name('hasil-pemeriksaan');
-Route::get('/hasil-pemeriksaan/{booking}', [HasilPemeriksaanController::class, 'show'])->name('hasil-pemeriksaan.show');
 Route::get('quiz/{index?}', [QuestionController::class, 'index'])->name('quiz');
 Route::get('artikel/{artikel}', [ArticleController::class, 'showArticle'])->name('artikel.show');
+Route::group(['middleware' => ['auth']], function () {
+    Route::resource('booking', BookingController::class)->names('booking');
+    Route::get('/list-booking', [BookingController::class, 'listBooking'])->name('booking.list');
+    Route::get('/formulir/{booking}', [FormulirUserController::class, 'index'])->name('formulir.user');
+    Route::post('/formulir', [FormulirUserController::class, 'store'])->name('formulir.store');
+    Route::get('/hasil-pemeriksaan', [HasilPemeriksaanController::class, 'index'])->name('hasil-pemeriksaan');
+    Route::get('/hasil-pemeriksaan/{booking}', [HasilPemeriksaanController::class, 'show'])->name('hasil-pemeriksaan.show');
+});
 
 
 // Admin 
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware(['auth', 'cekRole:admin'])->group(function () {
     Route::get('/', function () {
         return view('admin.pages.dashboard');
     })->name('admin.dashboard');
