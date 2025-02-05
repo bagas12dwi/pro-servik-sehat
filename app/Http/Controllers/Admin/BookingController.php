@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Booking;
 use App\Models\HealthCenter;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Excel;
 
 class BookingController extends Controller
 {
@@ -57,5 +58,17 @@ class BookingController extends Controller
             'data' => $booking->load(['identityHistory', 'kesehatan', 'keluarga', 'keluhan']),
             'action' => 'show'
         ]);
+    }
+
+    protected $excel;
+
+    public function __construct(Excel $excel)
+    {
+        $this->excel = $excel;
+    }
+
+    public function export()
+    {
+        return \Maatwebsite\Excel\Facades\Excel::download(\App\Exports\BookingsExport::class, 'booking.csv');
     }
 }

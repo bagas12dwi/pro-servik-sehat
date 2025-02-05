@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\BookingController as AdminBookingController;
 use App\Http\Controllers\Admin\FormulirAdminController;
+use App\Http\Controllers\Admin\HasilQuizController;
 use App\Http\Controllers\Admin\ResultFormController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\Auth\AuthController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\HasilPemeriksaanController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PrintController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\QuizRiskController;
 use App\Http\Controllers\TestimonialController;
 use Illuminate\Support\Facades\Route;
 use Spatie\FlareClient\View;
@@ -41,7 +43,17 @@ Route::get('/print/{booking}', [PrintController::class, 'formulir'])->name('prin
 
 // User 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('quiz/biodata', [QuestionController::class, 'indexBiodata'])->name('quiz.biodata');
 Route::get('quiz/{index?}', [QuestionController::class, 'index'])->name('quiz');
+Route::get('result', [QuestionController::class, 'result'])->name('quiz.result');
+Route::post('quiz/submit/{index}', [QuestionController::class, 'submitAnswer'])->name('quiz.submit');
+Route::post('quiz/biodata/store', [QuestionController::class, 'storeBiodata'])->name('quiz.biodata.store');
+Route::get('tes-resiko/biodata', [QuizRiskController::class, 'indexBiodata'])->name('tes-resiko.biodata');
+Route::post('tes-resiko/biodata/store', [QuizRiskController::class, 'storeBiodata'])->name('tes-resiko.biodata.store');
+Route::get('tes-resiko/{index?}', [QuizRiskController::class, 'index'])->name('tes-resiko');
+Route::post('/tes-resiko/next/{index}', [QuizRiskController::class, 'next'])->name('tes-resiko.next');
+Route::post('/tes-resiko/store', [QuizRiskController::class, 'store'])->name('tes-resiko.store');
+Route::get('/tes-resiko-result', [QuizRiskController::class, 'result'])->name('tes-resiko.result');
 Route::get('artikel/{artikel}', [ArticleController::class, 'showArticle'])->name('artikel.show');
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('booking', BookingController::class)->names('booking');
@@ -70,4 +82,7 @@ Route::prefix('admin')->middleware(['auth', 'cekRole:admin'])->group(function ()
     Route::resource('/testimoni', TestimonialController::class)->names('admin.testimoni');
     Route::resource('/artikel', ArticleController::class)->names('admin.artikel');
     Route::post('/artikel/upload', [ArticleController::class, 'upload']);
+    Route::get('/quiz', [HasilQuizController::class, 'index'])->name('admin.quiz');
+    Route::get('/quiz-resiko', [HasilQuizController::class, 'indexResiko'])->name('admin.quiz-resiko');
+    Route::get('/export', [AdminBookingController::class, 'export'])->name('admin.booking.export');
 });

@@ -24,16 +24,14 @@
                         lacak hasil sampel DNA HPV, chat bidan dan dokter, deteksi mandiri faktor resiko dan pengetahuan
                         kanker serviks dan kesehatan, semua bisa di E-Liminate!</p>
                 </div>
-                <a href="{{ route('quiz') }}" class="btn btn-primary">Mulai Quiz</a>
+                <div class="d-flex justify-content-center gap-2">
+                    <a href="{{ route('quiz.biodata') }}" class="btn btn-primary">Mulai Quiz</a>
+                    <a href="{{ route('tes-resiko.biodata') }}" class="btn btn-primary">Mulai Quiz Faktor Resiko Kanker
+                        Serviks</a>
+                </div>
             </div>
         </div>
     </section>
-
-    @auth
-        <div class="container-fluid my-3">
-            @include('components.alert.notification-index')
-        </div>
-    @endauth
 
     <section id="kontak">
         <div class="container-fluid my-3">

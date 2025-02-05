@@ -6,8 +6,10 @@ use App\Helpers\UrlHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
 use App\Models\HealthCenter;
+use App\Models\NotifiUser;
 use App\Models\ResultFormUpdate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 
 class ResultFormController extends Controller
 {
@@ -61,6 +63,12 @@ class ResultFormController extends Controller
 
         if ($request->hasFile('document_path')) {
             $validatedData['document_path'] = $request->file('document_path')->store('dokumen-hasil-pemeriksaan');
+            NotifiUser::create([
+                'user_id' => $booking->user_id,
+                'title' => 'Dokumen Hasil Pemeriksaan',
+                'message' => 'Dokumen hasil pemeriksaan anda sudah tersedia, silahkan cek di aplikasi anda',
+                'link' => URL::asset('storage/' . $validatedData['document_path'])
+            ]);
         }
 
         Booking::where('id', $booking->id)->update($validatedData);
@@ -90,6 +98,14 @@ class ResultFormController extends Controller
         } elseif ($validatedData['result_form'] == '5') {
             $resultText = 'Tindak Lanjut';
         }
+
+
+        NotifiUser::create([
+            'user_id' => $booking->user_id,
+            'title' => 'Hasil Pemeriksaan Update',
+            'message' => 'Hasil Pemeriksaan dengan No. Dokumen <strong>' . $booking->document_no . '</strong> sudah sampai tahap <strong>' . $resultText . '</strong>',
+            'link' => route('hasil-pemeriksaan.show', $booking->id)
+        ]);
 
 
         $message = "Halo, kami informasikan pasien *$booking->name* untuk hasil pemeriksaan anda sudah sampai tahap *$resultText*";
