@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\BookingsExport;
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
 use App\Models\HealthCenter;
 use Illuminate\Http\Request;
-use Maatwebsite\Excel\Excel;
+use Maatwebsite\Excel\Facades\Excel;
 
 class BookingController extends Controller
 {
@@ -60,15 +61,8 @@ class BookingController extends Controller
         ]);
     }
 
-    protected $excel;
-
-    public function __construct(Excel $excel)
-    {
-        $this->excel = $excel;
-    }
-
     public function export()
     {
-        return \Maatwebsite\Excel\Facades\Excel::download(\App\Exports\BookingsExport::class, 'booking.csv');
+        return Excel::download(new BookingsExport, 'booking.xlsx');
     }
 }

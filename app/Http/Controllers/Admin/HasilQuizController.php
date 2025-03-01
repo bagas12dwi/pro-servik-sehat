@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\QuizExport;
+use App\Exports\QuizResikoExport;
 use App\Http\Controllers\Controller;
 use App\Models\ResultQuiz;
 use App\Models\ResultQuizResiko;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class HasilQuizController extends Controller
 {
@@ -59,5 +62,15 @@ class HasilQuizController extends Controller
             'results' => $result,
             'years' => $years
         ]);
+    }
+
+    public function exportQuiz()
+    {
+        return Excel::download(new QuizExport, 'hasil_quiz.xlsx');
+    }
+
+    public function exportQuizResiko()
+    {
+        return Excel::download(new QuizResikoExport, 'hasil_quiz_resiko.xlsx');
     }
 }

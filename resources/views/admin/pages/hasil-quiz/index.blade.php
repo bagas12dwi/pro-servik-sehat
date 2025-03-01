@@ -8,10 +8,11 @@
                 <h1 class="app-page-title mb-0">Daftar {{ $title }}</h1>
             </div>
             <div class="col-auto">
-                <div class="page-utilities">
+                <div class="page-utilities d-flex gap-2">
                     @include('admin.components.search', [
                         'route' => route('admin.artikel.index'),
                     ])
+                    <a href="{{ route('admin.quiz.export') }}" class="btn btn-primary text-white">Export</a>
                 </div><!--//table-utilities-->
             </div><!--//col-auto-->
         </div><!--//row-->

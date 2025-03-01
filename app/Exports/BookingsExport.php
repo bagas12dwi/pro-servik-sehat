@@ -4,17 +4,17 @@ namespace App\Exports;
 
 use App\Models\Booking;
 use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class BookingsExport implements FromCollection
+class BookingsExport implements FromCollection, WithHeadings
 {
     /**
      * @return \Illuminate\Support\Collection
      */
     public function collection()
     {
-        return Booking::all()->map(function ($booking) {
+        return Booking::where('status_form', '!=', '2')->get()->map(function ($booking) {
             return [
-                'No' => $booking->id,
                 'No. Booking' => $booking->document_no,
                 'Nama Pasien' => $booking->name,
                 'NIK' => $booking->nik,
@@ -34,7 +34,6 @@ class BookingsExport implements FromCollection
     public function headings(): array
     {
         return [
-            'No',
             'No. Booking',
             'Nama Pasien',
             'NIK',

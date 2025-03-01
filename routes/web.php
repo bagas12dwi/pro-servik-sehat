@@ -85,4 +85,6 @@ Route::prefix('admin')->middleware(['auth', 'cekRole:admin'])->group(function ()
     Route::get('/quiz', [HasilQuizController::class, 'index'])->name('admin.quiz');
     Route::get('/quiz-resiko', [HasilQuizController::class, 'indexResiko'])->name('admin.quiz-resiko');
     Route::get('/export', [AdminBookingController::class, 'export'])->name('admin.booking.export');
+    Route::get('/export-quiz', [HasilQuizController::class, 'exportQuiz'])->name('admin.quiz.export');
+    Route::get('/export-quiz-resiko', [HasilQuizController::class, 'exportQuizResiko'])->name('admin.quiz-resiko.export');
 });
